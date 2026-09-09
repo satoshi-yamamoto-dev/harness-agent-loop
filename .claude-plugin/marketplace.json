@@ -1,0 +1,12 @@
+{
+  "name": "harness-tools",
+  "owner": { "name": "Satoshi Yamamoto" },
+  "metadata": { "description": "開発ハーネスを配布するマーケットプレイス。" },
+  "plugins": [
+    {
+      "name": "agent-loop",
+      "source": "./",
+      "description": "harness-agent-loop: 設計・実装・評価を進める開発ハーネス。"
+    }
+  ]
+}

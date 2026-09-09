@@ -1,0 +1,14 @@
+{
+  "name": "agent-loop",
+  "version": "1.0.0",
+  "description": "planner・generator・evaluator による設計・実装・評価のエージェントループ。",
+  "author": { "name": "Satoshi Yamamoto" },
+  "homepage": "https://satoshi-yamamoto-dev.github.io/harness-agent-loop/",
+  "repository": "https://github.com/satoshi-yamamoto-dev/harness-agent-loop",
+  "license": "MIT",
+  "agents": [
+    "./.claude/agents/planner.md",
+    "./.claude/agents/generator.md",
+    "./.claude/agents/evaluator.md"
+  ]
+}

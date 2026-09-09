@@ -1,0 +1,37 @@
+# --- 機密情報 ---
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*credential*
+*secret*
+id_rsa*
+id_ed25519*
+.claude.json
+.npmrc
+.pypirc
+.netrc
+*.kdbx
+
+# --- ローカル設定（共有する agents/ ・ rules/ は除外しない） ---
+.claude/settings.local.json
+
+# --- 依存・ビルド成果物 ---
+node_modules/
+dist/
+build/
+.next/
+out/
+coverage/
+*.log
+
+# --- OS / エディタ ---
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
