@@ -31,11 +31,9 @@ Claude Code 内で次のコマンドを実行してください。
 
 この README.md があるフォルダーの内容を、`satoshi-yamamoto-dev/harness-agent-loop` リポジトリのルートに配置します（外側のフォルダーを含めないでください）。
 
-1. リポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定する。
-2. `main` ブランチに push する。既に push 済みの場合は Actions の **Deploy user guide to GitHub Pages → Run workflow** を実行する。
-3. workflow の成功後、上記のユーザーガイド URL を開く。
-
-公開対象は `docs/guide/` のみです。開発中の製品仕様書・スプリント資料は Pages に含まれません。
+1. リポジトリの **Settings → Pages → Build and deployment → Source** を **Deploy from a branch** に設定する。
+2. Branchを **main**、フォルダーを **/docs** に設定して保存する。
+3. デプロイの成功後、上記のユーザーガイド URL を開く。
 
 ローカルで配布設定を検証する場合:
 
