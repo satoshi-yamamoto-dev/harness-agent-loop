@@ -21,7 +21,7 @@ Claude Code 内で次のコマンドを実行してください。
 
 オーケストレーション手順は `skills/start/SKILL.md` に含まれています。`/agent-loop:start` で明示的に実行できるほか、新規開発・機能追加・スプリント再開の依頼に応じて Claude が Skill を選択できます。Evaluator の実行には Playwright MCP と起動済みの対象アプリが必要です。
 
-[ユーザーガイド（GitHub Pages）](https://satoshi-yamamoto-dev.github.io/harness-agent-loop/) · [ガイドのソース](docs/guide/index.html)
+[ユーザーガイド（GitHub Pages）](https://satoshi-yamamoto-dev.github.io/harness-agent-loop/)
 
 ## セキュリティ
 
