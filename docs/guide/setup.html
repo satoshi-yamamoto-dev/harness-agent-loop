@@ -5,9 +5,9 @@
 <main id="content" class="main-content">
   <nav class="site-nav" aria-label="ユーザーガイド"><a href="./">機能の概要</a><span class="separator">｜</span><a aria-current="page" href="setup.html">クイックスタート</a><span class="separator">｜</span><a href="usage.html">各機能の使い方</a></nav>
   <h1>クイックスタート</h1><p>開発対象のプロジェクトで、設計・実装・評価を実行する手順です。</p>
-  <h2>前提</h2><p>Claude Code、Playwright MCP、開発対象のプロジェクトを用意してください。対象アプリの起動コマンドとURLが必要です。</p><div class="notice">内容を確認した信頼できるプロジェクトで使用し、Claude Codeの権限確認を無効にしないでください。仕様書やスプリント資料に認証情報を記載せず、Evaluatorには信頼できる対象アプリのURLだけを渡してください。</div>
+  <h2>前提</h2><p>Claude Codeと開発対象のプロジェクトを用意してください。対象アプリの起動コマンドとURLが必要です。</p><div class="notice">内容を確認した信頼できるプロジェクトで使用し、Claude Codeの権限確認を無効にしないでください。仕様書やスプリント資料に認証情報を記載せず、Evaluatorには信頼できる対象アプリのURLだけを渡してください。</div>
   <h2>1. ハーネスをインストールする</h2><p>Claude Code 内で実行します。</p><pre><code>/plugin marketplace add satoshi-yamamoto-dev/harness-agent-loop
-/plugin install agent-loop@harness-tools</code></pre>
+/plugin install agent-loop@harness-tools</code></pre><p>Playwright MCPをまだ導入していない場合は、ターミナルで実行します。</p><pre><code>claude mcp add playwright npx @playwright/mcp@latest</code></pre><p>すでにPlaywright MCPを導入済みの場合、この操作は不要です。Claude Code内の <code>/mcp</code> で接続状態を確認できます。</p>
   <h2>2. 実装を依頼する</h2><p>対象プロジェクトでClaude Codeを開き、要求を渡します。</p><pre><code>/agent-loop:start タスク管理アプリを作りたい。
 期限と優先度で整理でき、スマートフォンでも使いやすくしてください。</code></pre><p>仕様を確認して承認すると、契約作成、実装、評価の順に進みます。</p>
   <h2>3. 実行結果を確認する</h2><p><code>docs/010_製品仕様書/spec.md</code> と <code>docs/020_スプリント/sprint-N.md</code>、実装されたアプリ、Evaluatorの判定を確認します。</p>
