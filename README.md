@@ -4,11 +4,11 @@
 
 ## インストール（Claude Code）
 
-Claude Code 内で次のコマンドを実行してください。
+ターミナルで次のコマンドを実行してください。マーケットプレイスとプラグインはいずれもユーザースコープへインストールされます。
 
 ```text
-/plugin marketplace add satoshi-yamamoto-dev/harness-agent-loop
-/plugin install agent-loop@harness-tools
+claude plugin marketplace add --scope user satoshi-yamamoto-dev/harness-agent-loop
+claude plugin install --scope user agent-loop@harness-tools
 ```
 
 再起動後、対象プロジェクトで `start` Skill を実行します。
