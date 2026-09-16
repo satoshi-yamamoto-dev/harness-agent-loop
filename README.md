@@ -21,6 +21,8 @@ Claude Code 内で次のコマンドを実行してください。
 
 オーケストレーション手順は `skills/start/SKILL.md` に含まれています。`/agent-loop:start` で明示的に実行できるほか、新規開発・機能追加・スプリント再開の依頼に応じて Claude が Skill を選択できます。Evaluator の実行には Playwright MCP と起動済みの対象アプリが必要です。
 
+スプリント進捗は対象プロジェクトの `docs/020_スプリント/README.md` で一元管理します。更新はメインエージェント専任で、Planner / Generator / Evaluator の完了報告を受けるたびに、該当 Step の状態を更新します。Evaluator の詳細な判定結果は各 `sprint-N.md` に分離して記録します。
+
 [ユーザーガイド（GitHub Pages）](https://satoshi-yamamoto-dev.github.io/harness-agent-loop/)
 
 ## セキュリティ
@@ -75,10 +77,11 @@ planner → generator(契約起票) ⇄ evaluator(契約承認) → generator(�
 │   └── agents/          # サブエージェント定義（planner / generator / evaluator）
 ├── skills/
 │   └── start/
-│       └── SKILL.md     # 開始処理とオーケストレーション手順
+│       ├── SKILL.md     # 開始処理とオーケストレーション手順
+│       └── references/  # 進捗READMEのひな形
 ├── docs/
 │   ├── 010_製品仕様書/  # planner が生成する製品仕様書
-│   └── 020_スプリント/  # スプリント計画＋契約
+│   └── 020_スプリント/  # READMEで進捗管理、sprint-N.mdに計画・契約・評価詳細
 ├── CLAUDE.md            # プロジェクト固有情報（技術スタック・起動方法など）を記載
 └── README.md
 ```
