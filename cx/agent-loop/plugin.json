@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agent-loop",
+  "version": "1.0.0",
+  "description": "Planner、Generator、Evaluator の役割でアプリケーションの仕様策定、実装、評価を進める開発ハーネス。",
+  "author": {
+    "name": "Satoshi Yamamoto"
+  },
+  "homepage": "https://satoshi-yamamoto-dev.github.io/harness-agent-loop/",
+  "repository": "https://github.com/satoshi-yamamoto-dev/harness-agent-loop",
+  "license": "MIT"
+}

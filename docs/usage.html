@@ -1,21 +1,78 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="harness-agent-loopの詳しい使い方"><title>各機能の使い方 | harness-agent-loop</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><a class="skip-link" href="#content">本文へ移動</a>
-<header class="page-header"><h1>各機能の使い方</h1><p>設計・実装・独立評価をつなぐ Claude Code Plugin</p><a class="github-button" href="https://github.com/satoshi-yamamoto-dev/harness-agent-loop">View on GitHub</a></header>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="harness-agent-loopの詳しい使い方">
+  <title>各機能の使い方 | harness-agent-loop</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip-link" href="#content">本文へ移動</a>
+<header class="page-header">
+  <h1>各機能の使い方</h1>
+  <p>Claude Code と Codex で使える開発ハーネス</p>
+  <a class="github-button" href="https://github.com/satoshi-yamamoto-dev/harness-agent-loop">View on GitHub</a>
+</header>
 <main id="content" class="main-content">
   <nav class="site-nav" aria-label="ユーザーガイド"><a href="./">機能の概要</a><span class="separator">｜</span><a href="setup.html">クイックスタート</a><span class="separator">｜</span><a aria-current="page" href="usage.html">各機能の使い方</a></nav>
-  <h1>各機能の使い方</h1><p><code>start</code> Skill は開発対象プロジェクトのルートで使用します。プラグインのインストール先へ成果物を書き込む必要はありません。</p>
-  <h2>できること</h2><ul><li>短い要求から製品仕様書とスプリント計画を作る</li><li>実装前にテスト可能な完了条件を起票・レビューする</li><li>機能とUIを一つのスプリントとして実装する</li><li>Playwrightによる機能テストとデザイン評価を行う</li><li>評価で見つかった問題を修正し、再評価する</li></ul>
-  <h2>1. 新しい開発を開始する：start Skill</h2><pre><code>/agent-loop:start メモの追加・編集・削除とキーワード検索ができるWebアプリを作ってください。</code></pre><p>要求には、利用者、必要な操作、保存したいデータ、完成時に確認したいことを含めると、仕様を具体化しやすくなります。Skill はスラッシュコマンドで明示的に実行できるほか、関連する依頼に応じて Claude が自動的に選択できます。</p>
-  <h2>2. 既存のスプリントを再開する</h2><pre><code>/agent-loop:start Sprint 1 を再開してください。既存の仕様と契約を確認してください。</code></pre><p>Skill は既存の <code>CLAUDE.md</code>、製品仕様書、スプリント資料を確認してから、オーケストレーション手順の該当ステップへ戻ります。</p>
-  <h2>3. 仕様とスプリント計画を確認する</h2><table><thead><tr><th>ファイル</th><th>内容</th></tr></thead><tbody><tr><td><code>docs/010_製品仕様書/spec.md</code></td><td>プロダクト方針、機能、技術設計</td></tr><tr><td><code>docs/020_スプリント/README.md</code></td><td>全スプリントと各Stepの進捗（メインエージェントが更新）</td></tr><tr><td><code>docs/020_スプリント/sprint-N.md</code></td><td>スプリントの機能、ゴール、完了条件、Evaluatorの判定詳細</td></tr></tbody></table><p>Planner が作成した仕様は、ユーザーが承認するまで実装へ進みません。</p>
-  <h2>4. スプリント契約を合意する</h2><p>Generator が5〜15個を目安に、機械的に確認できる完了条件を起票します。Evaluator は仕様適合、テスト可能性、曖昧さ、矛盾を確認します。差し戻された場合は、承認されるまで契約を修正します。</p>
-  <h2>5. 実装とUIを完成させる</h2><p>契約承認後、Generator が機能とUIを実装します。スタブやTODOを残さず、契約条件ごとに自己テストを行い、完了報告を作成します。</p>
-  <h2>6. アプリを評価する</h2><p>対象アプリを起動し、評価時にURLを渡します。Evaluator は契約条件、空状態や長い入力などのエッジケース、コンソールエラーを確認します。</p><table><thead><tr><th>デザイン基準</th><th>合格点</th></tr></thead><tbody><tr><td>デザインの質</td><td>6/10以上</td></tr><tr><td>オリジナリティ</td><td>6/10以上</td></tr><tr><td>クラフト</td><td>5/10以上</td></tr><tr><td>機能性</td><td>7/10以上</td></tr></tbody></table><p>不合格の場合は具体的な修正指示を Generator に戻し、評価をやり直します。3回連続で不合格になるとループを停止し、ユーザーに方針を確認します。</p>
-  <h2>7. アンインストールする</h2><p>クイックスタートでは <code>agent-loop@harness-tools</code> をユーザースコープへインストールします。ターミナルで、インストール時と同じスコープを指定してアンインストールします。</p><pre><code>claude plugin uninstall --scope user agent-loop@harness-tools</code></pre><p>完了後、次のコマンドを実行し、一覧に <code>agent-loop@harness-tools</code> が表示されないことを確認します。</p><pre><code>claude plugin list</code></pre><div class="notice">アンインストールしても、ハーネスで作成・更新したプロジェクトのソースコードや <code>docs</code>、このリポジトリの作業コピーは削除されません。</div>
-  <h2>エージェント名</h2><table><thead><tr><th>登録名</th><th>役割</th></tr></thead><tbody><tr><td><code>agent-loop:planner</code></td><td>仕様書とスプリント計画</td></tr><tr><td><code>agent-loop:generator</code></td><td>契約起票、機能とUIの実装</td></tr><tr><td><code>agent-loop:evaluator</code></td><td>契約レビュー、機能とデザインの評価</td></tr></tbody></table>
-  <h2>困ったとき</h2><table><thead><tr><th>症状</th><th>確認すること</th></tr></thead><tbody><tr><td><code>start</code> Skillが見つからない</td><td><code>/plugin</code> で有効化を確認し、Claude Codeを再起動する</td></tr><tr><td>エージェントが見つからない</td><td><code>/agents</code> で <code>agent-loop:</code> 接頭辞の登録名を確認する</td></tr><tr><td>ブラウザ評価ができない</td><td><code>/mcp</code> の接続、対象アプリの起動、URLへの到達を確認する</td></tr><tr><td>期待したステップから始まらない</td><td>依頼文に新規開発か再開か、対象のSprint番号を明記する</td></tr></tbody></table>
-  <div class="notice">オーケストレーション手順は <code>skills/start/SKILL.md</code> に含まれ、プラグインと一緒にインストールされます。別のrulesファイルを読み込む必要はありません。</div>
+  <h1>各機能の使い方</h1>
+  <p>start Skill は開発対象プロジェクトで使用します。成果物はそのプロジェクトに保存されます。</p>
+  <div class="platform-tabs" role="group" aria-label="使用する製品">
+    <input type="radio" id="usage-claude" name="usage-platform" checked>
+    <input type="radio" id="usage-codex" name="usage-platform">
+    <div class="tab-list">
+      <label for="usage-claude">Claude Code</label>
+      <label for="usage-codex">Codex</label>
+    </div>
+    <section class="tab-panel claude-panel" aria-labelledby="usage-claude-label">
+      <h2 id="usage-claude-label">Claude Code の操作</h2>
+      <h3>新しい開発を開始する</h3>
+      <pre><code>/agent-loop:start メモの追加・編集・削除とキーワード検索ができるWebアプリを作ってください。</code></pre>
+      <h3>既存のスプリントを再開する</h3>
+      <pre><code>/agent-loop:start Sprint 1 を再開してください。既存の仕様と契約を確認してください。</code></pre>
+      <p>Claude Code 版には <code>agent-loop:planner</code>、<code>agent-loop:generator</code>、<code>agent-loop:evaluator</code> の3エージェントが登録されます。接続を確認するには <code>/agents</code>、Playwright MCP は <code>/mcp</code> を使います。</p>
+      <h3>アンインストール</h3>
+      <pre><code>claude plugin uninstall --scope user agent-loop@harness-tools</code></pre>
+      <p>Skill が見つからない場合は <code>claude plugin list</code> で有効化を確認し、Claude Code を再起動してください。</p>
+    </section>
+    <section class="tab-panel codex-panel" aria-labelledby="usage-codex-label">
+      <h2 id="usage-codex-label">Codex の操作</h2>
+      <h3>新しい開発を開始する</h3>
+      <pre><code>$agent-loop:start メモの追加・編集・削除とキーワード検索ができるWebアプリを作ってください。</code></pre>
+      <h3>既存のスプリントを再開する</h3>
+      <pre><code>$agent-loop:start Sprint 1 を再開してください。既存の仕様と契約を確認してください。</code></pre>
+      <p>Codex 版では3つの役割定義を Skill が参照します。サブエージェント機能が利用できる場合は各役割へ作業を渡し、利用できない場合は段階ごとに役割を切り替えます。ブラウザ評価には利用環境のブラウザ操作手段を使用します。</p>
+      <h3>無効化・削除</h3>
+      <p>ターミナルで削除する場合は次を実行します。Skill が見つからない場合はインストールと有効化を確認し、新しいタスクで試してください。</p>
+      <pre><code>codex plugin remove agent-loop@harness-tools-codex</code></pre>
+    </section>
+  </div>
+  <h2>共通の開発フロー</h2>
+  <ol>
+    <li>Planner が製品仕様書とスプリント計画を作る。ユーザーは仕様の方向性を確認する。</li>
+    <li>Generator がテスト可能なスプリント契約を起票する。</li>
+    <li>Evaluator が契約の仕様適合、テスト可能性、曖昧さ、矛盾をレビューする。</li>
+    <li>承認された契約に従い、Generator が機能と UI を実装する。</li>
+    <li>Evaluator が起動したアプリを操作し、契約とデザインを評価する。不合格なら修正と再評価を行う。</li>
+  </ol>
+  <h2>成果物と進捗</h2>
+  <table><thead><tr><th>ファイル</th><th>内容</th></tr></thead><tbody>
+    <tr><td><code>docs/010_製品仕様書/spec.md</code></td><td>プロダクト方針、機能、高レベル技術設計</td></tr>
+    <tr><td><code>docs/020_スプリント/README.md</code></td><td>全スプリントと各 Step の進捗。メインエージェントだけが更新</td></tr>
+    <tr><td><code>docs/020_スプリント/sprint-N.md</code></td><td>機能、ゴール、完了条件、Evaluator の判定詳細</td></tr>
+  </tbody></table>
+  <h2>評価基準</h2>
+  <p>Evaluator は契約条件と、空状態・長い入力などのエッジケース、コンソールエラーを確認します。契約条件を満たさない場合は不合格です。ブラウザで実操作できなかった条件は未検証として記録します。</p>
+  <table><thead><tr><th>デザイン基準</th><th>合格点</th></tr></thead><tbody>
+    <tr><td>デザインの質</td><td>6/10以上</td></tr>
+    <tr><td>オリジナリティ</td><td>6/10以上</td></tr>
+    <tr><td>クラフト</td><td>5/10以上</td></tr>
+    <tr><td>機能性</td><td>7/10以上</td></tr>
+  </tbody></table>
+  <p>不合格の場合は具体的な修正指示を Generator に戻します。3回連続で不合格になった場合はループを停止し、ユーザーに方針を確認します。</p>
   <p class="page-links"><a href="setup.html">← クイックスタート</a><span class="separator">｜</span><a href="./">機能の概要に戻る</a></p>
   <footer class="site-footer"><span class="site-footer-owner"><a href="https://github.com/satoshi-yamamoto-dev/harness-agent-loop">harness-agent-loop</a> is maintained by <a href="https://github.com/satoshi-yamamoto-dev">satoshi-yamamoto-dev</a>.</span><span class="site-footer-credits">This guide is published with GitHub Pages.</span></footer>
-</main></body></html>
+</main>
+</body>
+</html>

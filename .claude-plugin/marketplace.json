@@ -5,7 +5,7 @@
   "plugins": [
     {
       "name": "agent-loop",
-      "source": "./",
+      "source": "./cc/agent-loop",
       "description": "harness-agent-loop: 設計・実装・評価を進める開発ハーネス。"
     }
   ]

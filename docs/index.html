@@ -1,16 +1,32 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="harness-agent-loopの機能概要"><title>機能の概要 | harness-agent-loop</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><a class="skip-link" href="#content">本文へ移動</a>
-<header class="page-header"><h1>機能の概要</h1><p>設計・実装・独立評価をつなぐ Claude Code Plugin</p><a class="github-button" href="https://github.com/satoshi-yamamoto-dev/harness-agent-loop">View on GitHub</a></header>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="harness-agent-loopの機能概要">
+  <title>機能の概要 | harness-agent-loop</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip-link" href="#content">本文へ移動</a>
+<header class="page-header">
+  <h1>機能の概要</h1>
+  <p>Claude Code と Codex で使える開発ハーネス</p>
+  <a class="github-button" href="https://github.com/satoshi-yamamoto-dev/harness-agent-loop">View on GitHub</a>
+</header>
 <main id="content" class="main-content">
   <nav class="site-nav" aria-label="ユーザーガイド"><a aria-current="page" href="./">機能の概要</a><span class="separator">｜</span><a href="setup.html">クイックスタート</a><span class="separator">｜</span><a href="usage.html">各機能の使い方</a></nav>
-  <h1>harness-agent-loop</h1><h2>機能の概要</h2>
-  <p><strong>harness-agent-loop</strong> は、実装前のスプリント契約を重視する、対話型の軽量ハーネスです。3つのサブエージェントが仕様作成・実装・評価をそれぞれ分担します。</p>
-  <img class="flow-image" src="assets/agent-flow.svg" alt="魔法使い猫のPlanner、剣士猫のGenerator、盾と鎧の猫Evaluatorが契約・実装・評価を進める流れ">
-  <p><strong>Planner</strong> が短い要求を整理し、製品仕様書とスプリント計画を作成します。</p>
-  <p>続いて <strong>Generator</strong> が完了条件を作成し、<strong>Evaluator</strong> の承認後に機能とUIを実装します。</p>
-  <p>実装後は <strong>Evaluator</strong> がアプリを操作して品質を評価します。問題が見つかると結果を Generator に返し、修正と再評価を繰り返します。</p>
+  <h1>harness-agent-loop</h1>
+  <p>短い要求からアプリケーションを設計・実装・評価するための開発ハーネスです。Claude Code と Codex のどちらからも使えます。</p>
+  <img class="flow-image" src="assets/agent-flow.svg" alt="Planner、Generator、Evaluatorが契約・実装・評価を進める流れ">
+  <h2>3つの役割</h2>
+  <p><strong>Planner</strong> が要求を整理し、製品仕様書とスプリント計画を作成します。</p>
+  <p><strong>Generator</strong> が完了条件を起票し、<strong>Evaluator</strong> の承認後に機能と UI を実装します。</p>
+  <p>実装後は Evaluator がアプリを操作して品質を評価します。問題が見つかると結果を Generator に返し、修正と再評価を繰り返します。各役割の実行方法は利用環境に合わせます。</p>
   <p>設計の出典：<a href="https://www.anthropic.com/engineering/harness-design-long-running-apps">Anthropic — Harness design for long-running application development</a></p>
-  <h2>使い始める</h2><p><a href="setup.html">クイックスタートを始める →</a></p>
+  <h2>使い始める</h2>
+  <p><a href="setup.html">クイックスタートを始める →</a></p>
   <footer class="site-footer"><span class="site-footer-owner"><a href="https://github.com/satoshi-yamamoto-dev/harness-agent-loop">harness-agent-loop</a> is maintained by <a href="https://github.com/satoshi-yamamoto-dev">satoshi-yamamoto-dev</a>.</span><span class="site-footer-credits">This guide is published with GitHub Pages.</span></footer>
-</main></body></html>
+</main>
+</body>
+</html>

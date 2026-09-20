@@ -1,0 +1,20 @@
+{
+  "name": "harness-tools-codex",
+  "interface": {
+    "displayName": "Harness Tools for Codex"
+  },
+  "plugins": [
+    {
+      "name": "agent-loop",
+      "source": {
+        "source": "local",
+        "path": "./cx/agent-loop"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
